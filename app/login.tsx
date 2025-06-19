@@ -34,7 +34,7 @@ export default function LoginScreen() {
       <Image
         source={require("../assets/images/logo-sekolah.png")}
         style={{ width: "35%", height: "35%", resizeMode: "contain" }}
-        className="rounded-full mb-0 sm:mb-4 md:mb-6 lg:mb-8"
+        className="rounded-full mb-0 sm:mb-0 md:mb-0 lg:mb-0"
         alt="Cute Avatar"
       />
 
