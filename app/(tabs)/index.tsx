@@ -33,35 +33,33 @@ export default function Home() {
     router.replace("/login");
   };
 
-const topics = [
-  {
-    id: 1,
-    title: "👑 Institusi Raja Payung Negara",
-    desc: "Fahami peranan raja-raja Melayu dan sistem Raja Berperlembagaan.",
-  },
-  {
-    id: 2,
-    title: "🕌 Agama Islam di Malaysia",
-    desc: "Ketahui peranan Islam sebagai agama Persekutuan dan kesannya dalam kehidupan.",
-  },
-  {
-    id: 3,
-    title: "📝 Bahasa Melayu Warisan Kita",
-    desc: "Pelajari kepentingan Bahasa Melayu sebagai bahasa rasmi dan warisan negara.",
-  },
-  {
-    id: 4,
-    title: "🛡️ Kedaulatan Negara Dicabar",
-    desc: "Kenali ancaman luar dan perjuangan mempertahankan kedaulatan negara.",
-  },
-  {
-    id: 5,
-    title: "⚔️ Bangkit Berjuang Penjajah Ditentang",
-    desc: "Ikuti perjuangan rakyat menentang penjajahan demi kemerdekaan.",
-  },
-];
-
-
+  const topics = [
+    {
+      id: 1,
+      title: "👑 Institusi Raja Payung Negara",
+      desc: "Fahami peranan raja-raja Melayu dan sistem Raja Berperlembagaan.",
+    },
+    {
+      id: 2,
+      title: "🕌 Agama Islam di Malaysia",
+      desc: "Ketahui peranan Islam sebagai agama Persekutuan dan kesannya dalam kehidupan.",
+    },
+    {
+      id: 3,
+      title: "📝 Bahasa Melayu Warisan Kita",
+      desc: "Pelajari kepentingan Bahasa Melayu sebagai bahasa rasmi dan warisan negara.",
+    },
+    {
+      id: 4,
+      title: "🛡️ Kedaulatan Negara Dicabar",
+      desc: "Kenali ancaman luar dan perjuangan mempertahankan kedaulatan negara.",
+    },
+    {
+      id: 5,
+      title: "⚔️ Bangkit Berjuang Penjajah Ditentang",
+      desc: "Ikuti perjuangan rakyat menentang penjajahan demi kemerdekaan.",
+    },
+  ];
 
   return (
     <ScrollView className="flex-1 bg-[#FFFDF7] px-6 pt-12">
@@ -73,14 +71,11 @@ const topics = [
         <Text className="text-2xl font-bold text-[#333]">
           Hai {userName} 👋
         </Text>
-        <Text className="text-base text-gray-500 mt-1">
-          Mari belajar Sejarah Tahun 5!
-        </Text>
       </View>
 
-      <Text className="text-xl font-normal text-[#333] mb-4 text-center mt-8">
+      <Text className="text-xl font-normal text-[#333] mb-4 text-center mt-0">
         Pilih topik untuk mulakan kuiz:
-      </Text> 
+      </Text>
 
       {topics.map((topic) => (
         <TouchableOpacity
@@ -97,7 +92,7 @@ const topics = [
 
       <TouchableOpacity
         onPress={handleLogout}
-        className="bg-red-400 mt-6 py-4 rounded-xl items-center"
+        className="bg-red-400 mt-6 py-4 rounded-xl items-center mb-8"
       >
         <Text className="text-white font-bold text-base">Log Keluar</Text>
       </TouchableOpacity>

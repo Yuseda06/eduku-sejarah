@@ -33,18 +33,19 @@ export default function LoginScreen() {
       {/* Cute Avatar */}
       <Image
         source={require("../assets/images/logo-sekolah.png")}
-        style={{ width: "50%", height: "50%", resizeMode: "contain" }}
-        className="rounded-full mb-4"
+        style={{ width: "35%", height: "35%", resizeMode: "contain" }}
+        className="rounded-full mb-0 sm:mb-4 md:mb-6 lg:mb-8"
+        alt="Cute Avatar"
       />
 
-      <Text className="text-3xl font-bold text-[#333] mb-2">
+      <Text className="font-baloo text-3xl text-modernGray mb-2 mt-0">
         Selamat Datang! 👋
       </Text>
 
-      <Text className="text-2xl font-bold  text-gray-600 mb-6 mt-8">
+      <Text className="font-poppins text-modern-base  text-gray-600 mb-0 mt-4">
         Pelajar Tahun 5 Efektif
       </Text>
-      <Text className="text-base text-gray-500 mb-6">
+      <Text className="text-base text-gray-500 mb-4 mt-0">
         Sila log masuk ke akaun anda
       </Text>
 
