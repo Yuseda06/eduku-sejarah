@@ -1,8 +1,14 @@
 import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image, Alert } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { supabase } from "../constants/supabaseClient";
-
 
 export default function LoginScreen() {
   const [email, setEmail] = useState("");
@@ -10,7 +16,10 @@ export default function LoginScreen() {
   const router = useRouter();
 
   const handleLogin = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
     if (error) {
       Alert.alert("Login gagal", error.message);
@@ -22,13 +31,22 @@ export default function LoginScreen() {
   return (
     <View className="flex-1 justify-center items-center px-6 bg-[#FFFDF7] p-4 sm:p-6 md:p-8 lg:p-320">
       {/* Cute Avatar */}
-      {/* <Image
-        source={require("../assets/avatar.png")} // tukar ke avatar yang comel, letak file ni kat assets
-        className="w-24 h-24 rounded-full mb-4"
-      /> */}
+      <Image
+        source={require("../assets/images/logo-sekolah.png")}
+        style={{ width: "50%", height: "50%", resizeMode: "contain" }}
+        className="rounded-full mb-4"
+      />
 
-      <Text className="text-3xl font-bold text-[#333] mb-2">Selamat Datang!</Text>
-      <Text className="text-base text-gray-500 mb-6">Sila log masuk ke akaun anda</Text>
+      <Text className="text-3xl font-bold text-[#333] mb-2">
+        Selamat Datang! 👋
+      </Text>
+
+      <Text className="text-2xl font-bold  text-gray-600 mb-6 mt-8">
+        Pelajar Tahun 5 Efektif
+      </Text>
+      <Text className="text-base text-gray-500 mb-6">
+        Sila log masuk ke akaun anda
+      </Text>
 
       {/* Email */}
       <TextInput
@@ -59,7 +77,9 @@ export default function LoginScreen() {
 
       {/* Register Link */}
       <TouchableOpacity onPress={() => router.push("/register")}>
-        <Text className="text-blue-500">Belum ada akaun? <Text className="underline">Daftar</Text></Text>
+        <Text className="text-blue-500">
+          Belum ada akaun? <Text className="underline">Daftar</Text>
+        </Text>
       </TouchableOpacity>
     </View>
   );

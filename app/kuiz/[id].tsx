@@ -34,13 +34,16 @@ export default function QuizScreen() {
       const { data, error } = await supabase
         .from("sejarah_questions")
         .select("*")
-        .eq("unit_id", Number(id))
-        .order("created_at", { ascending: false })
-        .limit(15);
+        .eq("unit_id", Number(id));
 
-      if (data) setQuestions(data);
+      if (data) {
+        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 15); // 🎲 random 15
+        setQuestions(shuffled);
+      }
+
       setLoading(false);
     };
+
     fetchQuestions();
   }, [id]);
 
