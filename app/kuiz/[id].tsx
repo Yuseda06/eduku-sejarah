@@ -37,7 +37,7 @@ export default function QuizScreen() {
         .eq("unit_id", Number(id));
 
       if (data) {
-        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 15); // 🎲 random 15
+        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 25); // 🎲 random 15
         setQuestions(shuffled);
       }
 
