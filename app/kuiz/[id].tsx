@@ -10,7 +10,7 @@ import {
 import { supabase } from "../../constants/supabaseClient";
 
 export default function QuizScreen() {
-  const { id } = useLocalSearchParams();
+  const { id, type } = useLocalSearchParams();
   const router = useRouter();
   const [questions, setQuestions] = useState<
     {
@@ -31,13 +31,19 @@ export default function QuizScreen() {
   useEffect(() => {
     const fetchQuestions = async () => {
       setLoading(true);
-      const { data, error } = await supabase
+      let query = supabase
         .from("sejarah_questions")
         .select("*")
         .eq("unit_id", Number(id));
 
+      if (type === "spot") {
+        query = query.ilike("question", "%spot peperiksaan%");
+      }
+
+      const { data, error } = await query;
+
       if (data) {
-        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 25); // 🎲 random 15
+        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 15); // limit spot ke 15
         setQuestions(shuffled);
       }
 

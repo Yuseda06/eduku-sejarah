@@ -78,16 +78,31 @@ export default function Home() {
       </Text>
 
       {topics.map((topic) => (
-        <TouchableOpacity
+        <View
           key={topic.id}
           className="bg-orange-100 p-4 rounded-2xl mb-4 shadow-sm"
-          onPress={() => router.push(`/kuiz/${topic.id}`)}
         >
           <Text className="text-lg font-bold text-orange-800">
             {topic.title}
           </Text>
           <Text className="text-sm text-gray-600 mt-1">{topic.desc}</Text>
-        </TouchableOpacity>
+
+          <View className="flex-row justify-between mt-3">
+            <TouchableOpacity
+              onPress={() => router.push(`/kuiz/${topic.id}?type=full`)}
+              className="bg-orange-300 px-4 py-2 rounded-lg"
+            >
+              <Text className="text-white font-bold">Kuiz Penuh</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={() => router.push(`/kuiz/${topic.id}?type=spot`)}
+              className="bg-orange-500 px-4 py-2 rounded-lg"
+            >
+              <Text className="text-white font-bold">Soalan Spot</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       ))}
 
       <TouchableOpacity
