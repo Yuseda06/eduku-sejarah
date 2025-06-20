@@ -56,7 +56,7 @@ export default function RegisterScreen() {
       </Text>
 
       <TextInput
-        placeholder="Nama Penuh"
+        placeholder="Nama Panggilan"
         onChangeText={(value) => (nameRef.current = value)}
         className="w-full bg-white p-4 rounded-xl mb-4 border border-gray-300"
       />
