@@ -43,7 +43,7 @@ export default function QuizScreen() {
       const { data, error } = await query;
 
       if (data) {
-        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 15); // limit spot ke 15
+        const shuffled = data.sort(() => Math.random() - 0.5).slice(0, 25); // limit spot ke 15
         setQuestions(shuffled);
       }
 
