@@ -75,7 +75,7 @@ export default function QuizScreen() {
       } else {
         setFinished(true);
       }
-    }, 500);
+    }, 4000);
   };
 
   if (loading) {
@@ -109,39 +109,48 @@ export default function QuizScreen() {
   const q = questions[current];
 
   return (
-    <ScrollView className="flex-1 px-6 py-12">
-      <Text className="text-xl font-semibold mb-4 text-orange-600">
-        Soalan {current + 1} / {questions.length}
-      </Text>
-      <Text className="text-lg font-bold text-[#333] mb-6">{q.question}</Text>
+    <View className="flex-1">
+      <ScrollView className="flex-1 px-6 py-12">
+        {/* Existing content */}
+        <Text className="text-xl font-semibold mb-4 text-orange-600">
+          Soalan {current + 1} / {questions.length}
+        </Text>
+        <Text className="text-lg font-bold text-[#333] mb-6">{q.question}</Text>
 
-      {["A", "B", "C", "D"].map((opt) => (
-        <TouchableOpacity
-          key={opt}
-          onPress={() => handleAnswer(opt as Choice)}
-          disabled={!!selected}
-          className={`p-4 mb-3 rounded-xl border ${
-            selected === opt
-              ? opt === q.answer
-                ? "border-green-500 bg-green-100"
-                : "border-red-500 bg-red-100"
-              : "border-gray-300 bg-white"
-          }`}
-        >
-          <Text className="text-base text-gray-800">
-            {opt}. {q[`choice_${opt.toLowerCase()}` as keyof Question]}
+        {["A", "B", "C", "D"].map((opt) => (
+          <TouchableOpacity
+            key={opt}
+            onPress={() => handleAnswer(opt as Choice)}
+            disabled={!!selected}
+            className={`p-4 mb-3 rounded-xl border ${
+              selected === opt
+                ? opt === q.answer
+                  ? "border-green-500 bg-green-100"
+                  : "border-red-500 bg-red-100"
+                : "border-gray-300 bg-white"
+            }`}
+          >
+            <Text className="text-base text-gray-800">
+              {opt}. {q[`choice_${opt.toLowerCase()}` as keyof Question]}
+            </Text>
+          </TouchableOpacity>
+        ))}
+
+        {selected && (
+          <Text className="text-base text-orange-600 mb-4">
+            {selected === q.answer ? "" : `Jawapan betul: ${q.answer}`}
           </Text>
-        </TouchableOpacity>
-      ))}
+        )}
+      </ScrollView>
 
       <TouchableOpacity
         onPress={() => router.replace("/")}
-        className="mt-6 bg-blue-500 px-6 py-3 rounded-full"
+        className="absolute bottom-6 left-6 right-6 bg-blue-500 px-6 py-3 rounded-full"
       >
         <Text className="text-white font-bold text-center">
           Kembali ke Laman Utama
         </Text>
       </TouchableOpacity>
-    </ScrollView>
+    </View>
   );
 }
